@@ -14,12 +14,7 @@ exports.findAll = (req, res) => {
 };
 
 exports.create = (req, res) => {
-  const {kode, nama, jadwal} = req.body;
-  MataKuliah.create({
-    kode: kode,
-    nama: nama,
-    jadwal: jadwal,
-  })
+  MataKuliah.create(req.body)
       .then((data) => {
         res.send(data);
       })
@@ -27,8 +22,17 @@ exports.create = (req, res) => {
         res.status(500).send({message: err.message || 'Some error occured'});
       });
 };
-exports.adminBoard = (req, res) => {
-  res.status(200).send('Admin Content.');
+
+exports.update = (req, res) => {
+  const id = req.params.id;
+
+  MataKuliah.update(req.body, {where: {id: id}})
+      .then((data) => {
+        res.send({message: 'Mata kuliah was updated successfully.'});
+      })
+      .catch((err) => {
+        res.status(500).send({message: err.message || 'Some error occured'});
+      });
 };
 exports.moderatorBoard = (req, res) => {
   res.status(200).send('Moderator Content.');

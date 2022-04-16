@@ -17,7 +17,12 @@ module.exports = (app) => {
   );
   app.post(
       '/api/mata_kuliah',
-      [verifyToken, isAdmin || isDosen],
+      [verifyToken, isAdmin],
       mataKuliah.create,
+  );
+  app.put(
+      '/api/mata_kuliah/:id',
+      [verifyToken, isAdmin],
+      mataKuliah.update,
   );
 };
