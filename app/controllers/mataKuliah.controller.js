@@ -12,8 +12,20 @@ exports.findAll = (req, res) => {
         });
       });
 };
-exports.userBoard = (req, res) => {
-  res.status(200).send('User Content.');
+
+exports.create = (req, res) => {
+  const {kode, nama, jadwal} = req.body;
+  MataKuliah.create({
+    kode: kode,
+    nama: nama,
+    jadwal: jadwal,
+  })
+      .then((data) => {
+        res.send(data);
+      })
+      .catch((err) => {
+        res.status(500).send({message: err.message || 'Some error occured'});
+      });
 };
 exports.adminBoard = (req, res) => {
   res.status(200).send('Admin Content.');

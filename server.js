@@ -42,7 +42,8 @@ app.get('/', (req, res) => {
 });
 
 require('./app/routes/auth.routes')(app);
-require('./app/routes/user.routes')(app);
+require('./app/routes/mahasiswa.routes')(app);
+require('./app/routes/mataKuliah.routes')(app);
 
 app.listen(5000, () => {
   console.log(`Server is running on port 5000`);
