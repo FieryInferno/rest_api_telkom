@@ -13,6 +13,8 @@ db.user = require('../models/user.model.js')(sequelize, Sequelize);
 db.mahasiswa = require('../models/mahasiswa.model.js')(sequelize, Sequelize);
 db.mk = require('../models/mk.model.js')(sequelize, Sequelize);
 db.user.belongsTo(db.mk);
+db.mahasiswa.belongsTo(db.mk);
 db.mk.hasOne(db.user);
+db.mk.hasOne(db.mahasiswa);
 
 module.exports = db;
