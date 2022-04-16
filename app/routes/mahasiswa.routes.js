@@ -10,9 +10,28 @@ module.exports = (app) => {
     );
     next();
   });
+
   app.get(
       '/api/mahasiswa',
       [verifyToken, isAdmin || isDosen],
       mahasiswa.findAll,
+  );
+
+  app.post(
+      '/api/mahasiswa',
+      [verifyToken, isAdmin],
+      mahasiswa.create,
+  );
+
+  app.put(
+      '/api/mahasiswa/:id',
+      [verifyToken, isAdmin],
+      mahasiswa.update,
+  );
+
+  app.delete(
+      '/api/mahasiswa/:id',
+      [verifyToken, isAdmin],
+      mahasiswa.delete,
   );
 };

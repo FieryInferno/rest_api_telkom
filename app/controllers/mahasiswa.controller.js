@@ -12,12 +12,37 @@ exports.findAll = (req, res) => {
         });
       });
 };
-exports.userBoard = (req, res) => {
-  res.status(200).send('User Content.');
+
+exports.create = (req, res) => {
+  Mahasiswa.create(req.body)
+      .then((data) => {
+        res.send(data);
+      })
+      .catch((err) => {
+        res.status(500).send({message: err.message || 'Some error occured'});
+      });
 };
-exports.adminBoard = (req, res) => {
-  res.status(200).send('Admin Content.');
+
+exports.update = (req, res) => {
+  const id = req.params.id;
+
+  Mahasiswa.update(req.body, {where: {id: id}})
+      .then((data) => {
+        res.send({message: 'Mahasiswa was updated successfully.'});
+      })
+      .catch((err) => {
+        res.status(500).send({message: err.message || 'Some error occured'});
+      });
 };
-exports.moderatorBoard = (req, res) => {
-  res.status(200).send('Moderator Content.');
+
+exports.delete = (req, res) => {
+  const id = req.params.id;
+
+  Mahasiswa.destroy({where: {id: id}})
+      .then((data) => {
+        res.send({message: 'Mahasiswa was delete successfully.'});
+      })
+      .catch((err) => {
+        res.status(500).send({message: err.message || 'Some error occured'});
+      });
 };
