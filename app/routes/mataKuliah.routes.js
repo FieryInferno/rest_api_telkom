@@ -10,19 +10,28 @@ module.exports = (app) => {
     );
     next();
   });
+
   app.get(
       '/api/mata_kuliah',
       [verifyToken, isAdmin || isDosen],
       mataKuliah.findAll,
   );
+
   app.post(
       '/api/mata_kuliah',
       [verifyToken, isAdmin],
       mataKuliah.create,
   );
+
   app.put(
       '/api/mata_kuliah/:id',
       [verifyToken, isAdmin],
       mataKuliah.update,
+  );
+
+  app.delete(
+      '/api/mata_kuliah/:id',
+      [verifyToken, isAdmin],
+      mataKuliah.delete,
   );
 };

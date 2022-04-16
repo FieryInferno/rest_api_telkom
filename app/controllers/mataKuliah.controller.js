@@ -34,6 +34,15 @@ exports.update = (req, res) => {
         res.status(500).send({message: err.message || 'Some error occured'});
       });
 };
-exports.moderatorBoard = (req, res) => {
-  res.status(200).send('Moderator Content.');
+
+exports.delete = (req, res) => {
+  const id = req.params.id;
+
+  MataKuliah.destroy({where: {id: id}})
+      .then((data) => {
+        res.send({message: 'Mata kuliah was delete successfully.'});
+      })
+      .catch((err) => {
+        res.status(500).send({message: err.message || 'Some error occured'});
+      });
 };
