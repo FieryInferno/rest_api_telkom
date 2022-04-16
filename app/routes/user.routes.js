@@ -1,5 +1,7 @@
 const {authJwt} = require('../middleware');
-const controller = require('../controllers/user.controller');
+const {verifyToken, isAdmin, isDosen} = authJwt;
+const mahasiswa = require('../controllers/mahasiswa.controller');
+const mataKuliah = require('../controllers/mataKuliah.controller');
 
 module.exports = (app) => {
   app.use((req, res, next) => {
@@ -9,7 +11,16 @@ module.exports = (app) => {
     );
     next();
   });
-  app.get('/api/mahasiswa', [authJwt.verifyToken], controller.findAll);
+  app.get(
+      '/api/mahasiswa',
+      [verifyToken, isAdmin || isDosen],
+      mahasiswa.findAll,
+  );
+  app.get(
+      '/api/mata_kuliah',
+      [verifyToken, isAdmin || isDosen],
+      mataKuliah.findAll,
+  );
   // app.get(
   //     '/api/test/user',
   //     [authJwt.verifyToken],

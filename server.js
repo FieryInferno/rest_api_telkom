@@ -18,16 +18,17 @@ app.use(bodyParser.urlencoded({extended: true}));
 //     id: 1,
 //     kode: 'MK1',
 //     nama: 'Algoritma dan Pemrograman',
+//     jadwal: 'Senin',
 //   });
 //   Mk.create({
 //     id: 2,
 //     kode: 'MK2',
-//     nama: 'Pemrograman Web',
+//     jadwal: 'Selasa',
 //   });
 //   Mk.create({
 //     id: 3,
 //     kode: 'MK3',
-//     nama: 'Pengenalan Database',
+//     jadwal: 'Rabu',
 //   });
 // };
 
