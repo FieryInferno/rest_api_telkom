@@ -1,0 +1,443 @@
+{
+	"info": {
+		"_postman_id": "aaf8d779-c4a3-4ca7-bf07-412939d90b34",
+		"name": "test_telkom",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Register admin",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"username\": \"bagassetia\",\r\n    \"password\": \"BagasSetia1!\",\r\n    \"name\": \"M. Bagas Setia\",\r\n    \"nip\": \"10104019\",\r\n    \"role\": \"admin\",\r\n    \"mkId\": null\r\n}"
+				},
+				"url": {
+					"raw": "http://localhost:5000/api/auth/signup",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "5000",
+					"path": [
+						"api",
+						"auth",
+						"signup"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Login",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"username\": \"bagassetia\",\r\n    \"password\": \"BagasSetia1!\"\r\n}"
+				},
+				"url": {
+					"raw": "http://localhost:5000/api/auth/signin",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "5000",
+					"path": [
+						"api",
+						"auth",
+						"signin"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Register dosen dengan mata kuliah yang tidak ada",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"username\": \"dosen1\",\r\n    \"password\": \"dosen1\",\r\n    \"name\": \"Dosen 1\",\r\n    \"nip\": \"10104001\",\r\n    \"role\": \"dosen\",\r\n    \"mkId\": \"9\"\r\n}"
+				},
+				"url": {
+					"raw": "http://localhost:5000/api/auth/signup",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "5000",
+					"path": [
+						"api",
+						"auth",
+						"signup"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Register dosen dengan username tidak lowercase",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"username\": \"DoSen1\",\r\n    \"password\": \"dosen1\",\r\n    \"name\": \"Dosen 1\",\r\n    \"nip\": \"10104001\",\r\n    \"role\": \"dosen\",\r\n    \"mkId\": \"1\"\r\n}"
+				},
+				"url": {
+					"raw": "http://localhost:5000/api/auth/signup",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "5000",
+					"path": [
+						"api",
+						"auth",
+						"signup"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Register dosen dengan password tidak sesuai",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"username\": \"dosen1\",\r\n    \"password\": \"dosen1\",\r\n    \"name\": \"Dosen 1\",\r\n    \"nip\": \"10104001\",\r\n    \"role\": \"dosen\",\r\n    \"mkId\": \"1\"\r\n}"
+				},
+				"url": {
+					"raw": "http://localhost:5000/api/auth/signup",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "5000",
+					"path": [
+						"api",
+						"auth",
+						"signup"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Register dosen",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"username\": \"dosen1\",\r\n    \"password\": \"Password1!\",\r\n    \"name\": \"Dosen 1\",\r\n    \"nip\": \"10104001\",\r\n    \"role\": \"dosen\",\r\n    \"mkId\": \"1\"\r\n}"
+				},
+				"url": {
+					"raw": "http://localhost:5000/api/auth/signup",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "5000",
+					"path": [
+						"api",
+						"auth",
+						"signup"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get mahasiswa",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "x-access-token",
+						"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwiaWF0IjoxNjUwMDk0MjkzLCJleHAiOjE2NTAxODA2OTN9.5E3JhJfuJQWUy5FDbiFJMtC-kzQJPdzWMlluqzoE0aA",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "http://localhost:5000/api/mahasiswa",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "5000",
+					"path": [
+						"api",
+						"mahasiswa"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get mata kuliah",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "x-access-token",
+						"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwiaWF0IjoxNjUwMDk0MjkzLCJleHAiOjE2NTAxODA2OTN9.5E3JhJfuJQWUy5FDbiFJMtC-kzQJPdzWMlluqzoE0aA",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "http://localhost:5000/api/mata_kuliah",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "5000",
+					"path": [
+						"api",
+						"mata_kuliah"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Create mata kuliah",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "x-access-token",
+						"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwiaWF0IjoxNjUwMDk0MjkzLCJleHAiOjE2NTAxODA2OTN9.5E3JhJfuJQWUy5FDbiFJMtC-kzQJPdzWMlluqzoE0aA",
+						"type": "text"
+					},
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"kode\": \"MK3\",\r\n    \"nama\": \"Matematika\",\r\n    \"jadwal\": \"Sabtu\"\r\n}"
+				},
+				"url": {
+					"raw": "http://localhost:5000/api/mata_kuliah",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "5000",
+					"path": [
+						"api",
+						"mata_kuliah"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Update mata kuliah",
+			"request": {
+				"method": "PUT",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					},
+					{
+						"key": "x-access-token",
+						"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwiaWF0IjoxNjUwMDk0MjkzLCJleHAiOjE2NTAxODA2OTN9.5E3JhJfuJQWUy5FDbiFJMtC-kzQJPdzWMlluqzoE0aA",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"kode\": \"MK4\",\r\n    \"nama\": \"IPA\",\r\n    \"jadwal\": \"Minggu\"\r\n}"
+				},
+				"url": {
+					"raw": "http://localhost:5000/api/mata_kuliah/5",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "5000",
+					"path": [
+						"api",
+						"mata_kuliah",
+						"5"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Delete mata kuliah",
+			"request": {
+				"method": "DELETE",
+				"header": [
+					{
+						"key": "x-access-token",
+						"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwiaWF0IjoxNjUwMDk0MjkzLCJleHAiOjE2NTAxODA2OTN9.5E3JhJfuJQWUy5FDbiFJMtC-kzQJPdzWMlluqzoE0aA",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "http://localhost:5000/api/mata_kuliah/5",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "5000",
+					"path": [
+						"api",
+						"mata_kuliah",
+						"5"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Create mahasiswa",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "x-access-token",
+						"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwiaWF0IjoxNjUwMDk0MjkzLCJleHAiOjE2NTAxODA2OTN9.5E3JhJfuJQWUy5FDbiFJMtC-kzQJPdzWMlluqzoE0aA",
+						"type": "text"
+					},
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"nama\": \"Andrew Robertson\",\r\n    \"mkId\": 2\r\n}"
+				},
+				"url": {
+					"raw": "http://localhost:5000/api/mahasiswa",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "5000",
+					"path": [
+						"api",
+						"mahasiswa"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Update mahasiswa",
+			"request": {
+				"method": "PUT",
+				"header": [
+					{
+						"key": "x-access-token",
+						"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwiaWF0IjoxNjUwMDk0MjkzLCJleHAiOjE2NTAxODA2OTN9.5E3JhJfuJQWUy5FDbiFJMtC-kzQJPdzWMlluqzoE0aA",
+						"type": "text"
+					},
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"nama\": \"Kostas Tsimikas\",\r\n    \"mkId\": 2\r\n}"
+				},
+				"url": {
+					"raw": "http://localhost:5000/api/mahasiswa/2",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "5000",
+					"path": [
+						"api",
+						"mahasiswa",
+						"2"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Delete mahasiswa",
+			"request": {
+				"method": "DELETE",
+				"header": [
+					{
+						"key": "x-access-token",
+						"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwiaWF0IjoxNjUwMDk0MjkzLCJleHAiOjE2NTAxODA2OTN9.5E3JhJfuJQWUy5FDbiFJMtC-kzQJPdzWMlluqzoE0aA",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "http://localhost:5000/api/mahasiswa/2",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "5000",
+					"path": [
+						"api",
+						"mahasiswa",
+						"2"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
